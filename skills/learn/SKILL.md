@@ -20,8 +20,8 @@ doesn't already ignore it, ask the user once which they want:
 - **Ignore it in this repo only:** add `TOUR.md` to `.git/info/exclude`.
 
 Search code as the explain skill's [Searching](../explain/SKILL.md#searching) says: every
-lookup through both `rg` and the language server, each candidate checked against the code,
-and one line at the start of the session naming any missing tool.
+lookup through both text search and the language server, each candidate checked against the
+code, and one line at the start of the session when no language server is available.
 
 Three rules govern every step:
 
@@ -56,7 +56,7 @@ survey, name a stop time as a clock time 45 minutes away, and say so when it pas
    tests when they finish in under a minute, so the lessons can show real output.
 3. Find the **core areas**: the modules the rest of the code depends on. Rank them by
    evidence, not by reading alone:
-   - how many files import or call each module: its import and call sites, from `rg` and
+   - how many files import or call each module: its import and call sites, from text search and
      the language server's find-references
    - how big it is: `scc` per directory, or `git ls-files <dir> | xargs wc -l` when `scc`
      isn't installed

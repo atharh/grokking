@@ -56,7 +56,7 @@ The skills work without these, but they find better evidence with them.
 
 ### A language server for the repo's language
 
-The skills run every lookup through both the language server and `rg`, then check each
+The skills run every lookup through both the language server and text search, then check each
 result against the code. The language server is the one that opens methods defined in
 your dependencies, so the skills read that source instead of explaining it from memory. In
 code with static types, its find-references also follows calls through imports, aliases
@@ -91,10 +91,9 @@ the plugin starts the server.
   comments, strings and variables named `send`.
 - **`scc`**: counts lines of code per directory, to size the core areas. Without it, the
   survey counts lines with `git ls-files | xargs wc -l`.
-- **`rg`** (ripgrep): text search over the whole repo that skips gitignored and binary
-  files. Claude Code's Grep tool runs it when that tool is available. Without either, the
-  skills fall back to `grep` over folders they choose, which can miss callers, and they say
-  so at the start of a session.
+- **`rg`** (ripgrep): optional. Inside Claude Code, text search already skips gitignored
+  and binary files, through the Grep tool or the `grep` that Claude Code builds into its
+  shell. Install `rg` to rerun the searches the skills show you in your own terminal.
 
 ```bash
 brew install ast-grep scc ripgrep

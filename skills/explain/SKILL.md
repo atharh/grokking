@@ -26,11 +26,12 @@ error message, a log line. Then follow calls inward, searching as below.
 
 Run every lookup through both tools, because each finds what the other misses:
 
-- **Text search**, with `rg` or Claude Code's Grep tool, which runs it, over the whole repo.
-  It finds route strings, config keys, constants, and methods defined at runtime. Not
-  `grep -r` over guessed folders: `rg` skips gitignored and binary files, so it can search
-  everything, while a folder list that leaves out `test/` or `db/` misses callers without
-  any warning. When the repo doesn't ignore its logs, exclude them (`-g '!log'`).
+- **Text search** over the whole repo, with `rg`, the Grep tool, or `grep` in Bash, which
+  Claude Code replaces with a search that also skips gitignored and binary files. It finds
+  route strings, config keys, constants, and methods defined at runtime. Never limit it to
+  folders you guessed: a list that leaves out `test/` or `db/` misses callers without any
+  warning. When the repo doesn't ignore its logs, exclude them (`rg -g '!log'`,
+  `grep --exclude-dir=log`).
 - **The language server**, Claude Code's `LSP` tool: go-to-definition and find-references.
   It opens methods defined in dependencies, and in typed code it follows calls through
   imports, aliases and interfaces. Load it with ToolSearch when it is deferred, and retry
@@ -41,16 +42,11 @@ the lists. In code without types, such as Ruby, the language server matches meth
 and returns definitions from unrelated gems. Read a method from a dependency in its source,
 through go-to-definition or in the installed package; never explain it from memory.
 
-Before the first lookup in a session, check what is missing: `command -v rg`, unless the
-Grep tool is available, and whether the `LSP` tool has a server for the repo's main
-language. When something is missing, open the first answer with one line naming it and
-what it costs, then don't repeat it:
-
-- No language server: "No language server for <language>, so I read dependency code from
-  the installed packages, and calls through interfaces can be missed. To install one:
-  https://github.com/atharh/grokking#recommended-tools."
-- No `rg`: "`rg` isn't installed, so text search uses `grep` over folders I choose, which
-  can miss callers elsewhere. To install it: `brew install ripgrep`."
+Before the first lookup in a session, check whether the `LSP` tool has a server for the
+repo's main language. When it doesn't, open the first answer with one line, then don't
+repeat it: "No language server for <language>, so I read dependency code from the
+installed packages, and calls through interfaces can be missed. To install one:
+https://github.com/atharh/grokking#recommended-tools."
 
 ## Answer shape
 
