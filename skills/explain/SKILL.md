@@ -22,6 +22,15 @@ Read for intent: "the save thing" or "where it sends the mail" names a behavior,
 symbol. Find the code by what the user sees first: a route, a button label, a CLI flag, an
 error message, a log line. Then follow calls inward.
 
+Follow calls with the language server whenever one is available: go-to-definition to open
+what a name refers to, and find-references for its callers. In Claude Code that is the
+`LSP` tool; load it with ToolSearch when it is deferred. It resolves names the way the
+compiler does, so it finds calls through imports, aliases and interfaces that text search
+misses, and it opens methods defined in dependencies. Use `rg` or `ast-grep` only for text
+the language server can't resolve: route strings, config keys, error messages, names built
+at runtime. A method from a dependency is read from its source, through go-to-definition or
+in the installed package, never explained from memory.
+
 ## Answer shape
 
 Lay the answer out as the learn skill's [walkthrough.md](../learn/walkthrough.md) says:
@@ -36,8 +45,8 @@ the step format, `##` headers, and when a view earns its place.
    skill's [views.md](../learn/views.md), with `path:line` on each node.
 4. **How I found it**, one line naming the search, in a form the user could repeat: "I
    searched for the route `/messages`, opened its controller, then followed
-   `broadcast_create`." Name the tool when it matters: `rg`, the language server's
-   find-references, `git log -S`.
+   `broadcast_create`." Name the tool when it matters: the language server's
+   go-to-definition or find-references, `rg`, `git log -S`.
 
 For "where is X", the answer is the location plus its main callers.
 

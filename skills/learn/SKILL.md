@@ -19,6 +19,9 @@ doesn't already ignore it, ask the user once which they want:
   `~/.config/git/ignore` when that is unset.
 - **Ignore it in this repo only:** add `TOUR.md` to `.git/info/exclude`.
 
+Trace code as the explain skill's [Before answering](../explain/SKILL.md#before-answering)
+says: the language server first, text search only for what it can't resolve.
+
 Three rules govern every step:
 
 - **Keep the useful struggle.** Explain, then ask. Don't hand over an answer the user can
