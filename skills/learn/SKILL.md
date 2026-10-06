@@ -19,8 +19,9 @@ doesn't already ignore it, ask the user once which they want:
   `~/.config/git/ignore` when that is unset.
 - **Ignore it in this repo only:** add `TOUR.md` to `.git/info/exclude`.
 
-Trace code as the explain skill's [Before answering](../explain/SKILL.md#before-answering)
-says: the language server for dependencies and typed code, `rg` for the rest.
+Search code as the explain skill's [Searching](../explain/SKILL.md#searching) says: every
+lookup through both `rg` and the language server, each candidate checked against the code,
+and one line at the start of the session naming any missing tool.
 
 Three rules govern every step:
 
@@ -55,8 +56,8 @@ survey, name a stop time as a clock time 45 minutes away, and say so when it pas
    tests when they finish in under a minute, so the lessons can show real output.
 3. Find the **core areas**: the modules the rest of the code depends on. Rank them by
    evidence, not by reading alone:
-   - how many files import or call each module: the language server's find-references when
-     one is available, otherwise `ast-grep` or `rg` for its import and call sites
+   - how many files import or call each module: its import and call sites, from `rg` and
+     the language server's find-references
    - how big it is: `scc` per directory, or `git ls-files <dir> | xargs wc -l` when `scc`
      isn't installed
    - how often it changed in the last year:
@@ -86,12 +87,8 @@ survey, name a stop time as a clock time 45 minutes away, and say so when it pas
    Order the workflows by the user's goal first, then smaller before larger, then by how many
    core areas they pass through. Done when the map lists three to five core areas with their
    evidence, and three to five workflows, each traced to a real entry point you opened.
-5. Show the user the purpose line, the core area names, and the workflow names. If no
-   language server was available for the repo's main language, add one line saying so and
-   what it cost: "No language server for <language>, so code in dependencies is read from
-   the installed packages, and calls through interfaces in typed code can be missed. The
-   plugin's README, under Recommended tools, says how to install one." Show nothing more,
-   and start the lesson Start chose.
+5. Show the user the purpose line, the core area names, and the workflow names, nothing
+   more, and start the lesson Start chose.
 
 ## Lesson
 

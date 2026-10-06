@@ -20,21 +20,37 @@ as a guess and name what would settle it.
 
 Read for intent: "the save thing" or "where it sends the mail" names a behavior, not a
 symbol. Find the code by what the user sees first: a route, a button label, a CLI flag, an
-error message, a log line. Then follow calls inward.
+error message, a log line. Then follow calls inward, searching as below.
 
-Pick the search by what you are looking up. The language server is Claude Code's `LSP`
-tool: load it with ToolSearch when it is deferred, and retry when the first call says the
-server is starting.
+## Searching
 
-- **A method from a dependency:** go-to-definition, then read that source. Without a
-  language server, open it in the installed package. Never explain it from memory.
-- **In-repo code with static types** (TypeScript, Go, Rust, Java, Kotlin, typed Python):
-  go-to-definition and find-references. They follow calls through imports, aliases and
-  interfaces that text search misses.
-- **In-repo code without types** (Ruby, untyped JavaScript or Python): `rg`. The language
-  server can't infer a receiver's type there, so it matches by method name and returns
-  wrong candidates, and it can't see methods defined at runtime.
-- **Text in any language** (route strings, config keys, error messages): `rg`.
+Run every lookup through both tools, because each finds what the other misses:
+
+- **Text search**, with `rg` or Claude Code's Grep tool, which runs it, over the whole repo.
+  It finds route strings, config keys, constants, and methods defined at runtime. Not
+  `grep -r` over guessed folders: `rg` skips gitignored and binary files, so it can search
+  everything, while a folder list that leaves out `test/` or `db/` misses callers without
+  any warning. When the repo doesn't ignore its logs, exclude them (`-g '!log'`).
+- **The language server**, Claude Code's `LSP` tool: go-to-definition and find-references.
+  It opens methods defined in dependencies, and in typed code it follows calls through
+  imports, aliases and interfaces. Load it with ToolSearch when it is deferred, and retry
+  when the first call says the server is starting.
+
+Combine the two by opening each candidate and checking it against the code, not by merging
+the lists. In code without types, such as Ruby, the language server matches methods by name
+and returns definitions from unrelated gems. Read a method from a dependency in its source,
+through go-to-definition or in the installed package; never explain it from memory.
+
+Before the first lookup in a session, check what is missing: `command -v rg`, unless the
+Grep tool is available, and whether the `LSP` tool has a server for the repo's main
+language. When something is missing, open the first answer with one line naming it and
+what it costs, then don't repeat it:
+
+- No language server: "No language server for <language>, so I read dependency code from
+  the installed packages, and calls through interfaces can be missed. To install one:
+  https://github.com/atharh/grokking#recommended-tools."
+- No `rg`: "`rg` isn't installed, so text search uses `grep` over folders I choose, which
+  can miss callers elsewhere. To install it: `brew install ripgrep`."
 
 ## Answer shape
 
