@@ -54,16 +54,46 @@ Don't use both paths at once: two plugins named `grokking` would provide the sam
 
 The skills work without these, but they find better evidence with them.
 
-- **A language server plugin** for the repo's language, installed from `/plugin`. The
-  skills use its find-references to rank core areas and to trace callers. Without one, they
-  fall back to `ast-grep` or `rg`, which match text and miss indirect calls.
-- **`rg`** (ripgrep): fast text search for import and call sites.
-- **`ast-grep`**: syntax-aware search for call sites.
-- **`scc`**: lines of code per directory, used to size core areas. Without it, the survey
-  counts lines with `git ls-files | xargs wc -l`.
+### A language server for the repo's language
+
+This one matters most. The skills use its find-references to rank the core areas and to
+trace who calls what. It resolves names the way the compiler does, so it follows imports,
+aliases, and calls through an interface. Without it, the skills fall back to text search,
+which misses those calls.
+
+A language server takes two installs:
+
+1. The language server itself, a program on your `PATH`.
+2. The Claude Code plugin that tells Claude Code how to start it, from the official
+   marketplace: `/plugin install <plugin>@claude-plugins-official`.
+
+The plugin alone does nothing if the server isn't installed.
+
+| Language | Install the server | Plugin |
+|---|---|---|
+| Python | `npm install -g pyright` or `pip install pyright` | [`pyright-lsp`](https://github.com/anthropics/claude-plugins-official/tree/main/plugins/pyright-lsp) |
+| TypeScript, JavaScript | `npm install -g typescript-language-server typescript` | [`typescript-lsp`](https://github.com/anthropics/claude-plugins-official/tree/main/plugins/typescript-lsp) |
+| Go | `go install golang.org/x/tools/gopls@latest`, with `$HOME/go/bin` on your `PATH` | [`gopls-lsp`](https://github.com/anthropics/claude-plugins-official/tree/main/plugins/gopls-lsp) |
+| Rust | `rustup component add rust-analyzer` | [`rust-analyzer-lsp`](https://github.com/anthropics/claude-plugins-official/tree/main/plugins/rust-analyzer-lsp) |
+| Ruby | `gem install ruby-lsp` | [`ruby-lsp`](https://github.com/anthropics/claude-plugins-official/tree/main/plugins/ruby-lsp) |
+| Java | `brew install jdtls` | [`jdtls-lsp`](https://github.com/anthropics/claude-plugins-official/tree/main/plugins/jdtls-lsp) |
+| Kotlin | `brew install JetBrains/utils/kotlin-lsp` | [`kotlin-lsp`](https://github.com/anthropics/claude-plugins-official/tree/main/plugins/kotlin-lsp) |
+
+Each plugin's page has install steps for other systems. The same marketplace also has
+plugins for C and C++, C#, Lua, PHP and Swift. Restart Claude Code after installing, so
+the plugin starts the server.
+
+### Search and size tools
+
+- **`ast-grep`**: searches code by its syntax, so a search for calls to `send` skips
+  comments, strings and variables named `send`.
+- **`scc`**: counts lines of code per directory, to size the core areas. Without it, the
+  survey counts lines with `git ls-files | xargs wc -l`.
+- **`rg`** (ripgrep): Claude Code's built-in search already uses it. Install it to rerun
+  the searches the skills show you.
 
 ```bash
-brew install ripgrep ast-grep scc
+brew install ast-grep scc ripgrep
 ```
 
 On other systems, follow each tool's own install instructions.
