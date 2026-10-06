@@ -94,14 +94,8 @@ One workflow per session. You explain first; the user answers after they have se
 2. **Picture.** Before any code, show the whole path in one view from [views.md](views.md),
    with `path:line` on each node. It is the map the user follows through the walkthrough.
 3. **Walkthrough.** A commentary on the path, in the style of Lions' *Commentary on UNIX*:
-   three to six hops from trigger to end. At each hop:
-   - **Excerpt.** The shortest contiguous range that holds the hop's deciding lines,
-     verbatim, captioned `path:start-end`. Narrow the range rather than cut lines out of it.
-   - **Why.** Explain the decision behind the code: what it rules out, what would break
-     with the obvious alternative, the framework convention it leans on. A prose
-     restatement of what the line says teaches nothing.
-   - **Hand-off.** Name what this hop passes to the next and how: a method call, a
-     callback, a queued job, a websocket broadcast.
+   three to six hops from trigger to end. Lay out each hop as a step in
+   [walkthrough.md](walkthrough.md): title, excerpt, caption, why, handoff.
 
    Show exactly one hop per reply, kept to one screen, and show the next hop only when the
    user says so ("next" or the like). Answering a question, or anything else the user does in

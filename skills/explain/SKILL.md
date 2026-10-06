@@ -24,21 +24,16 @@ error message, a log line. Then follow calls inward.
 
 ## Answer shape
 
-1. **The answer**, in one or two plain sentences, before any code.
-2. **The path**, when the answer spans more than one place: the steps from trigger to
-   result, at most one screen per reply. Each step has:
-   - the shortest verbatim excerpt that holds its deciding lines, captioned
-     `path:start-end`
-   - why the code is written that way: what it rules out, what would break with the obvious
-     alternative, the framework convention it leans on. Restating what the line says
-     teaches nothing.
-   - how it hands off to the next step: a method call, a callback, a queued job, a
-     broadcast
+Lay the answer out as the learn skill's [walkthrough.md](../learn/walkthrough.md) says:
+the step format, `##` headers, and when a view earns its place.
 
-   When the path doesn't fit one screen, show the first steps and offer the rest. Stop at
-   what the user asked; don't widen into the surrounding system.
-3. **A view**, when the path crosses three or more files: one view from the learn skill's
-   [views.md](../learn/views.md), with `path:line` on each node.
+1. **The answer**, in one or two plain sentences, before any code, with no label.
+2. **The path**, under `## The path`, when the answer spans more than one place: the steps
+   from trigger to result, at most one screen per reply. When the path doesn't fit one
+   screen, show the first steps and offer the rest. Stop at what the user asked; don't
+   widen into the surrounding system.
+3. **A view**, only when walkthrough.md says it earns its place: one view from the learn
+   skill's [views.md](../learn/views.md), with `path:line` on each node.
 4. **How I found it**, one line naming the search, in a form the user could repeat: "I
    searched for the route `/messages`, opened its controller, then followed
    `broadcast_create`." Name the tool when it matters: `rg`, the language server's
