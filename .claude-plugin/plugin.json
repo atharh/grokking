@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
+  "name": "grokking",
+  "description": "Understand an unfamiliar codebase: answers grounded in quoted code, and lessons that walk one workflow at a time.",
+  "author": {
+    "name": "Athar Hameed",
+    "url": "https://github.com/atharh"
+  },
+  "repository": "https://github.com/atharh/grokking",
+  "license": "MIT"
+}

@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-marketplace.json",
+  "name": "grokking",
+  "description": "Claude Code skills for understanding unfamiliar codebases.",
+  "owner": {
+    "name": "Athar Hameed",
+    "url": "https://github.com/atharh"
+  },
+  "plugins": [
+    {
+      "name": "grokking",
+      "source": "./",
+      "description": "Understand an unfamiliar codebase: answers grounded in quoted code, and lessons that walk one workflow at a time."
+    }
+  ]
+}
