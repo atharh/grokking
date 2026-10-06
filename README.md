@@ -11,7 +11,8 @@ Ask `explain` things like "how does login work?", "where are emails sent?", "wha
 the user isn't signed in?", or "where do I start in this repo?".
 
 Run `/grokking:learn` to start lessons, or `/grokking:learn <module>` for a lesson on one
-module. The first run surveys the repo and writes `TOUR.md` at its root, excluded from git.
+module. The first run surveys the repo and writes `TOUR.md` at its root, after asking whether git should ignore it in every repo or
+only this one.
 
 ## Install
 

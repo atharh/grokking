@@ -9,8 +9,15 @@ disable-model-invocation: true
 The user runs `/grokking:learn` in a repo when they want to understand it. The lessons live
 in the conversation: every question is asked and answered in the chat, while the user is
 paying attention. The only file is the tour state, `TOUR.md` at the repo root, written for
-you, the next session's Claude, never for the user to read. Add `TOUR.md` to
-`.git/info/exclude` when you create it, so it stays out of commits.
+you, the next session's Claude, never for the user to read.
+
+Keep `TOUR.md` out of commits. Before creating it, run `git check-ignore -q TOUR.md`. If git
+doesn't already ignore it, ask the user once which they want:
+
+- **Ignore it in every repo** (recommended, since lessons can run in any repo): add `TOUR.md`
+  to the global excludes file, the path in `git config --global core.excludesFile`, or
+  `~/.config/git/ignore` when that is unset.
+- **Ignore it in this repo only:** add `TOUR.md` to `.git/info/exclude`.
 
 Three rules govern every step:
 
