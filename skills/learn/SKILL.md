@@ -54,7 +54,8 @@ survey, name a stop time as a clock time 45 minutes away, and say so when it pas
    evidence, not by reading alone:
    - how many files import or call each module: the language server's find-references when
      one is available, otherwise `ast-grep` or `rg` for its import and call sites
-   - how big it is: `scc` per directory
+   - how big it is: `scc` per directory, or `git ls-files <dir> | xargs wc -l` when `scc`
+     isn't installed
    - how often it changed in the last year:
      `git log --since=1.year --format= --name-only | cut -d/ -f1-2 | sort | uniq -c | sort -rn`
    - what the entry points call, and what the tests exercise most
@@ -82,7 +83,9 @@ survey, name a stop time as a clock time 45 minutes away, and say so when it pas
    Order the workflows by the user's goal first, then smaller before larger, then by how many
    core areas they pass through. Done when the map lists three to five core areas with their
    evidence, and three to five workflows, each traced to a real entry point you opened.
-5. Show the user the purpose line, the core area names, and the workflow names, nothing
+5. Show the user the purpose line, the core area names, and the workflow names. If the
+   language server, `ast-grep`, `rg` or `scc` was missing, add one line naming the missing
+   ones and pointing to the Recommended tools section of the plugin's README. Show nothing
    more, and start the lesson Start chose.
 
 ## Lesson

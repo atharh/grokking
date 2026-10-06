@@ -50,6 +50,24 @@ Don't use both paths at once: two plugins named `grokking` would provide the sam
 
 </details>
 
+## Recommended tools
+
+The skills work without these, but they find better evidence with them.
+
+- **A language server plugin** for the repo's language, installed from `/plugin`. The
+  skills use its find-references to rank core areas and to trace callers. Without one, they
+  fall back to `ast-grep` or `rg`, which match text and miss indirect calls.
+- **`rg`** (ripgrep): fast text search for import and call sites.
+- **`ast-grep`**: syntax-aware search for call sites.
+- **`scc`**: lines of code per directory, used to size core areas. Without it, the survey
+  counts lines with `git ls-files | xargs wc -l`.
+
+```bash
+brew install ripgrep ast-grep scc
+```
+
+On other systems, follow each tool's own install instructions.
+
 ## Updating later
 
 The marketplace is a git clone of this repo: refreshing it pulls new commits, and updating

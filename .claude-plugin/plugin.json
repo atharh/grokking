@@ -2,7 +2,7 @@
   "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
   "name": "grokking",
   "displayName": "Grokking",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "Understand an unfamiliar codebase: answers grounded in quoted code, and lessons that walk one workflow at a time.",
   "author": {
     "name": "Athar Hameed",
