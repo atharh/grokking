@@ -56,10 +56,12 @@ The skills work without these, but they find better evidence with them.
 
 ### A language server for the repo's language
 
-This one matters most. The skills use its find-references to rank the core areas and to
-trace who calls what. It resolves names the way the compiler does, so it follows imports,
-aliases, and calls through an interface. Without it, the skills fall back to text search,
-which misses those calls.
+This one matters most. The skills use its go-to-definition to open methods defined in
+your dependencies, so they read that source instead of explaining it from memory. In code
+with static types, its find-references also follows calls through imports, aliases and
+interfaces that text search misses. In Ruby and other code without types, the skills use
+text search for the repo's own code, because there the language server matches methods
+by name only.
 
 A language server takes two installs:
 

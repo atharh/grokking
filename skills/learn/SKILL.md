@@ -20,7 +20,7 @@ doesn't already ignore it, ask the user once which they want:
 - **Ignore it in this repo only:** add `TOUR.md` to `.git/info/exclude`.
 
 Trace code as the explain skill's [Before answering](../explain/SKILL.md#before-answering)
-says: the language server first, text search only for what it can't resolve.
+says: the language server for dependencies and typed code, `rg` for the rest.
 
 Three rules govern every step:
 
@@ -88,9 +88,10 @@ survey, name a stop time as a clock time 45 minutes away, and say so when it pas
    evidence, and three to five workflows, each traced to a real entry point you opened.
 5. Show the user the purpose line, the core area names, and the workflow names. If no
    language server was available for the repo's main language, add one line saying so and
-   what it cost: "No language server for <language>, so the caller counts come from text
-   search and can miss indirect calls. The plugin's README, under Recommended tools, says
-   how to install one." Show nothing more, and start the lesson Start chose.
+   what it cost: "No language server for <language>, so code in dependencies is read from
+   the installed packages, and calls through interfaces in typed code can be missed. The
+   plugin's README, under Recommended tools, says how to install one." Show nothing more,
+   and start the lesson Start chose.
 
 ## Lesson
 

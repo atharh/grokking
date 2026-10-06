@@ -22,14 +22,19 @@ Read for intent: "the save thing" or "where it sends the mail" names a behavior,
 symbol. Find the code by what the user sees first: a route, a button label, a CLI flag, an
 error message, a log line. Then follow calls inward.
 
-Follow calls with the language server whenever one is available: go-to-definition to open
-what a name refers to, and find-references for its callers. In Claude Code that is the
-`LSP` tool; load it with ToolSearch when it is deferred. It resolves names the way the
-compiler does, so it finds calls through imports, aliases and interfaces that text search
-misses, and it opens methods defined in dependencies. Use `rg` or `ast-grep` only for text
-the language server can't resolve: route strings, config keys, error messages, names built
-at runtime. A method from a dependency is read from its source, through go-to-definition or
-in the installed package, never explained from memory.
+Pick the search by what you are looking up. The language server is Claude Code's `LSP`
+tool: load it with ToolSearch when it is deferred, and retry when the first call says the
+server is starting.
+
+- **A method from a dependency:** go-to-definition, then read that source. Without a
+  language server, open it in the installed package. Never explain it from memory.
+- **In-repo code with static types** (TypeScript, Go, Rust, Java, Kotlin, typed Python):
+  go-to-definition and find-references. They follow calls through imports, aliases and
+  interfaces that text search misses.
+- **In-repo code without types** (Ruby, untyped JavaScript or Python): `rg`. The language
+  server can't infer a receiver's type there, so it matches by method name and returns
+  wrong candidates, and it can't see methods defined at runtime.
+- **Text in any language** (route strings, config keys, error messages): `rg`.
 
 ## Answer shape
 
