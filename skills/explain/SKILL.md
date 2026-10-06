@@ -39,11 +39,17 @@ Run every lookup through both tools, because each finds what the other misses:
 
 Combine the two by opening each candidate and checking it against the code, not by merging
 the lists. In code without types, such as Ruby, the language server matches methods by name
-and returns definitions from unrelated gems. Read a method from a dependency in its source,
-through go-to-definition or in the installed package; never explain it from memory.
+and returns definitions from unrelated gems.
 
-Before the first lookup in a session, check whether the `LSP` tool has a server for the
-repo's main language. When it doesn't, open the first answer with one line, then don't
+Read a method from a dependency through go-to-definition, and open the installed package
+only when go-to-definition finds nothing. Read it to its last line, not a fixed number of
+lines after the match: the deciding branch is often at the end. Never explain it from
+memory.
+
+Before the first lookup in a session, load the `LSP` tool with ToolSearch and make one
+call, such as go-to-definition on the entry point you found. Don't skip this because Bash
+is already loaded: without it, every lookup runs through text search alone. When the call
+says no server handles the language, open the first answer with one line, then don't
 repeat it: "No language server for <language>, so I read dependency code from the
 installed packages, and calls through interfaces can be missed. To install one:
 https://github.com/atharh/grokking#recommended-tools."
@@ -51,7 +57,9 @@ https://github.com/atharh/grokking#recommended-tools."
 ## Answer shape
 
 Lay the answer out as the learn skill's [walkthrough.md](../learn/walkthrough.md) says:
-the step format, `##` headers, and when a view earns its place.
+the step format, `##` headers, and when a view earns its place. Read it before the first
+answer in a session. Every step keeps its `Why it's written this way:` reasons; without
+them the answer is a map of the code, not an explanation of it.
 
 1. **The answer**, in one or two plain sentences, before any code, with no label.
 2. **The path**, under `## The path`, when the answer spans more than one place: the steps
