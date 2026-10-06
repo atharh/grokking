@@ -1,11 +1,21 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
   "name": "grokking",
+  "displayName": "Grokking",
+  "version": "1.0.0",
   "description": "Understand an unfamiliar codebase: answers grounded in quoted code, and lessons that walk one workflow at a time.",
   "author": {
     "name": "Athar Hameed",
     "url": "https://github.com/atharh"
   },
+  "homepage": "https://github.com/atharh/grokking",
   "repository": "https://github.com/atharh/grokking",
-  "license": "MIT"
+  "license": "MIT",
+  "keywords": [
+    "codebase",
+    "onboarding",
+    "code-reading",
+    "learning",
+    "walkthrough"
+  ]
 }

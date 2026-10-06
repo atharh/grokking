@@ -1,7 +1,7 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-marketplace.json",
   "name": "grokking",
-  "description": "Claude Code skills for understanding unfamiliar codebases.",
+  "description": "Home of the Grokking plugin.",
   "owner": {
     "name": "Athar Hameed",
     "url": "https://github.com/atharh"
@@ -10,7 +10,9 @@
     {
       "name": "grokking",
       "source": "./",
-      "description": "Understand an unfamiliar codebase: answers grounded in quoted code, and lessons that walk one workflow at a time."
+      "description": "Understand an unfamiliar codebase: answers grounded in quoted code, and lessons that walk one workflow at a time.",
+      "category": "development",
+      "tags": ["codebase", "onboarding", "code-reading", "learning", "walkthrough"]
     }
   ]
 }

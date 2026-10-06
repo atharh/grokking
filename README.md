@@ -16,12 +16,62 @@ only this one.
 
 ## Install
 
-```sh
+Add the marketplace, then install the plugin from it, from inside a Claude Code session or
+from your shell.
+
+**In Claude Code:**
+
+```
+/plugin marketplace add atharh/grokking
+/plugin install grokking@grokking
+```
+
+**From the shell:**
+
+```bash
 claude plugin marketplace add atharh/grokking
 claude plugin install grokking@grokking
 ```
 
-Then start a new Claude Code session. Update later with `claude plugin update grokking`.
+If the install summary says `Run /reload-plugins to activate.`, run that.
+
+<details>
+<summary>Or: install from a clone, without the marketplace</summary>
+
+```bash
+git clone https://github.com/atharh/grokking ~/grokking
+cd ~/grokking
+./install.sh
+```
+
+`install.sh` symlinks the repo into `~/.claude/skills/grokking`, where Claude Code picks it
+up as a plugin. Updating is `git pull` in the clone, then `/reload-plugins` or a restart.
+Don't use both paths at once: two plugins named `grokking` would provide the same skills.
+
+</details>
+
+## Updating later
+
+The marketplace is a git clone of this repo: refreshing it pulls new commits, and updating
+the plugin then installs from the refreshed clone. Both steps are needed.
+
+**In Claude Code:**
+
+```
+/plugin marketplace update grokking
+```
+
+Then open `/plugin`, select `grokking`, and choose **Update now**.
+
+**From the shell:**
+
+```bash
+claude plugin marketplace update grokking
+claude plugin update grokking@grokking
+```
+
+Restart Claude Code, or run `/reload-plugins`, to load the new version. `claude plugin list`
+shows what you're on.
 
 ## License
 
