@@ -3,6 +3,10 @@
 Both skills walk code as steps from trigger to result: `explain` in one answer, `learn` one
 step per reply. Lay out every step the same way, so the user always knows where to look.
 
+Give a step only to code that decides something. A line that only connects two steps, such
+as a route, an include, or a config entry, goes in the next step's title or the previous
+step's handoff: "The login form posts to `SessionsController#create` (`config/routes.rb:6`)."
+
 ## A step
 
 ````markdown
@@ -26,9 +30,10 @@ Handoff: it calls `authenticated_as`, which sets `Current.user`.
 1. **Title.** A bold numbered sentence saying what the step does, in plain words. No
    `path:line` in the title.
 2. **Excerpt.** The shortest range that holds the step's deciding lines, verbatim, in a
-   fenced block with its language. Narrow the range rather than cut lines out of it. When
-   two places in one file both matter, `...` may join them, and the caption gives the whole
-   span. Never join two files in one block.
+   fenced block with its language. Narrow the range rather than cut lines out of it. `...`
+   may join two places in one file only when fewer than ten lines separate them, and the
+   caption gives the whole span. Farther apart, give each place its own block and caption.
+   Never join two files in one block.
 3. **Caption.** `path:start-end` on its own line under the block.
 4. **Why.** The label `Why it's written this way:`, then one reason per bullet: what the
    code rules out, what would break with the obvious alternative, the framework convention
