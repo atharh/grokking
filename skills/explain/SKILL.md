@@ -75,6 +75,10 @@ them the answer is a map of the code, not an explanation of it.
 
 For "where is X", the answer is the location plus its main callers.
 
+A question you put to the user comes with what settles it: the answer with `path:line`
+after it, or the exact command or test that answers it. Never leave a question whose
+deciding facts the answer doesn't give.
+
 ## What-if questions
 
 Settle "what happens if" by running something: a test, a one-line script, or a temporary
