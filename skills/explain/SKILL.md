@@ -56,7 +56,7 @@ https://github.com/atharh/grokking#recommended-tools."
 
 ## Answer shape
 
-Lay the answer out as the learn skill's [walkthrough.md](../learn/walkthrough.md) says:
+Lay the answer out as the shared [walkthrough.md](../../shared/walkthrough.md) says:
 the step format, `##` headers, and when a view earns its place. Read it before the first
 answer in a session. Every step keeps its `Why it's written this way:` reasons; without
 them the answer is a map of the code, not an explanation of it.
@@ -66,8 +66,8 @@ them the answer is a map of the code, not an explanation of it.
    from trigger to result, at most one screen per reply. When the path doesn't fit one
    screen, show the first steps and offer the rest. Stop at what the user asked; don't
    widen into the surrounding system.
-3. **A view**, only when walkthrough.md says it earns its place: one view from the learn
-   skill's [views.md](../learn/views.md), with `path:line` on each node.
+3. **A view**, only when walkthrough.md says it earns its place: one view from the shared
+   [views.md](../../shared/views.md), with `path:line` on each node.
 4. **How I found it**, one line naming the search, in a form the user could repeat: "I
    searched for the route `/messages`, opened its controller, then followed
    `broadcast_create`." Name the tool when it matters: the language server's

@@ -126,6 +126,6 @@ shows what you're on.
 
 ## License
 
-MIT. `skills/learn/views.md` is adapted from HumanLayer's
+MIT. `shared/views.md` is adapted from HumanLayer's
 [`show-me` skill](https://github.com/humanlayer/skills) under the MIT License; see
-`skills/learn/LICENSE-show-me`.
+`shared/LICENSE-show-me`.

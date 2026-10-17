@@ -96,11 +96,12 @@ One workflow per session. You explain first; the user answers after they have se
 
 1. **Orient.** Say in one sentence what the workflow does from the user's side. Run it, or
    the tests that cover it, and show the real output.
-2. **Picture.** Before any code, show the whole path in one view from [views.md](views.md),
-   with `path:line` on each node. It is the map the user follows through the walkthrough.
+2. **Picture.** Before any code, show the whole path in one view from
+   [views.md](../../shared/views.md), with `path:line` on each node. It is the map the user
+   follows through the walkthrough.
 3. **Walkthrough.** A commentary on the path, in the style of Lions' *Commentary on UNIX*:
    three to six hops from trigger to end. Lay out each hop as a step in
-   [walkthrough.md](walkthrough.md): title, excerpt, caption, why, handoff.
+   [walkthrough.md](../../shared/walkthrough.md): title, excerpt, caption, why, handoff.
 
    Show exactly one hop per reply, kept to one screen, and show the next hop only when the
    user says so ("next" or the like). Answering a question, or anything else the user does in
@@ -153,4 +154,5 @@ and stays. Then the lesson starts.
 
 Ask the user to explain the whole system in five sentences: what it is for, its core areas,
 its main workflows, and how they connect. Correct it once, then show one view of the whole
-system from [views.md](views.md). The tour is done; tell the user `TOUR.md` can be deleted.
+system from [views.md](../../shared/views.md). The tour is done; tell the user `TOUR.md` can be
+deleted.

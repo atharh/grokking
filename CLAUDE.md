@@ -1,7 +1,8 @@
 # CLAUDE.md
 
 Public repo: the Grokking plugin for Claude Code. Every directory under `skills/` is one
-skill. Keep it free of anything about one person's setup or working style.
+skill. `shared/` holds the files both skills follow (answer layout and diagrams), so an edit
+there changes both. Keep it free of anything about one person's setup or working style.
 
 Check a change with `claude plugin validate .` from the repo root.
 
