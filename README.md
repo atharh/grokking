@@ -11,8 +11,8 @@ Ask `explain` things like "how does login work?", "where are emails sent?", "wha
 the user isn't signed in?", or "where do I start in this repo?".
 
 Run `/grokking:learn` to start lessons, or `/grokking:learn <module>` for a lesson on one
-module. The first run surveys the repo and writes `TOUR.md` at its root, after asking whether git should ignore it in every repo or
-only this one.
+module. The first run surveys the repo and writes `TOUR.md` at its root. Unless git already
+ignores `TOUR.md`, it first asks whether git should ignore it in every repo or only this one.
 
 ## Install
 
@@ -87,8 +87,6 @@ the plugin starts the server.
 
 ### Search and size tools
 
-- **`ast-grep`**: searches code by its syntax, so a search for calls to `send` skips
-  comments, strings and variables named `send`.
 - **`scc`**: counts lines of code per directory, to size the core areas. Without it, the
   survey counts lines with `git ls-files | xargs wc -l`.
 - **`rg`** (ripgrep): optional. Inside Claude Code, text search already skips gitignored
@@ -96,7 +94,7 @@ the plugin starts the server.
   shell. Install `rg` to rerun the searches the skills show you in your own terminal.
 
 ```bash
-brew install ast-grep scc ripgrep
+brew install scc ripgrep
 ```
 
 On other systems, follow each tool's own install instructions.

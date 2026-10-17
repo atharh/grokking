@@ -36,7 +36,7 @@ MIT License, Copyright (c) 2026 HumanLayer. Full text in [LICENSE-show-me](LICEN
 
   ```html
   <script type="module">
-    import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
+    import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11.17.2/dist/mermaid.esm.min.mjs";
     mermaid.initialize({ startOnLoad: true });
   </script>
   ```
@@ -64,7 +64,7 @@ MIT License, Copyright (c) 2026 HumanLayer. Full text in [LICENSE-show-me](LICEN
 
 - **Component tree** for UI code, with the state and module boundaries that matter.
 
-- **Diff of a shape** for the check question "where would you change it": show the call
+- **Diff of a shape** for a question about where a change would go: show the call
   tree or file tree with `+` and `-` lines for the change.
 
 - **One HTML page** only when the concept is too dense for Mermaid, such as a state machine

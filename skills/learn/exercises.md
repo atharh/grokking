@@ -26,15 +26,19 @@ answer given.
 - State the task as three lines: the goal, the `path:line` to start from, and the done
   condition (a named test passes, or a named output appears). Give the expected size too,
   in files and lines, so an answer that sprawls tells the user they are off course.
-- Write the solution yourself first, on the branch, run it, then revert it. Set only an
-  exercise you have seen pass.
+- Write the solution yourself first, on the exercise branch from Running it step 1, run
+  it, then revert it. Set only an exercise you have seen pass.
 
 ## Running it
 
-1. Check that the working tree is clean, then create the branch `tour/<lesson number>-<slug>`.
+1. Check that the working tree is clean; if it isn't, ask the user to commit or stash
+   first. Then create the branch `tour/<lesson number>-<slug>` for a workflow, or
+   `tour/<module slug>` for a module, and write and revert the solution there before
+   setting the task.
 2. The user writes the code. Hints climb one step per request: the file and line, then the
    method or call to change, then the answer.
-3. You run the tests and show the output.
+3. Run the tests and show the output. On rung 1 the user has already run them; show their
+   output or rerun them.
 4. Ask whether to keep the branch. Keep: commit on it. Discard: switch back and delete it.
 5. Record it under `## Exercises` in `TOUR.md`:
    `- <workflow or module>: rung <n>, <task in one line>, <kept on tour/... or discarded>`.

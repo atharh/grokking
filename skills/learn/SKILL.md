@@ -8,7 +8,7 @@ disable-model-invocation: true
 
 The user runs `/grokking:learn` in a repo when they want to understand it. The lessons live
 in the conversation: every question is asked and answered in the chat, while the user is
-paying attention. The only file is the tour state, `TOUR.md` at the repo root, written for
+paying attention. The only file in the repo is the tour state, `TOUR.md` at the repo root, written for
 you, the next session's Claude, never for the user to read.
 
 Keep `TOUR.md` out of commits. Before creating it, run `git check-ignore -q TOUR.md`. If git
@@ -36,16 +36,17 @@ Three rules govern every step:
 
 Read `TOUR.md`, then pick the session's lesson:
 
-- **Missing:** run the survey, then lesson 1.
 - **The user named a module** (`/grokking:learn <module>`): the module lesson for it, after
-  the survey if `TOUR.md` was missing.
+  the survey if `TOUR.md` is missing.
+- **Missing:** run the survey, then lesson 1.
 - **A workflow is unticked:** the lesson for the first unticked workflow.
 - **Every workflow ticked, a core area unticked:** the module lesson for the first unticked
   core area.
 - **Everything ticked:** the capstone.
 
 Open with the warm-up whenever `## Misses` has entries. When the lesson starts, after any
-survey, name a stop time as a clock time 45 minutes away, and say so when it passes.
+survey, run `date` and name the clock time 45 minutes on as the stop time. Run `date` again
+before each hop and question, and say so when the stop time has passed.
 
 ## Survey
 
@@ -121,7 +122,7 @@ One workflow per session. You explain first; the user answers after they have se
 6. **Close.** Tick the workflow in `TOUR.md`, record the exercise under `## Exercises`
    (adding the section if it is missing), then say in one line what the next lesson is.
 
-When the user says "just tell me", give one hint first; give the answer if they ask again.
+During What-if, when the user says "just tell me", give one hint first; give the answer if they ask again.
 
 Never teach a guess about the code as fact; open the code first.
 
@@ -142,8 +143,8 @@ The lesson above, aimed at one module instead of one workflow:
 ## Misses
 
 Only What-if questions still answered wrong after the second look become misses. Write each
-as `- <question as asked> → <answer, path:line>`. Keep at most ten; past ten, drop the
-oldest.
+as `- <question as asked> → <answer, path:line>`, appended at the end, so the first entry
+is the oldest. Keep at most ten; past ten, drop the oldest.
 
 ## Warm-up
 

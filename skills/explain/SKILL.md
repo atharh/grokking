@@ -9,7 +9,7 @@ The user asks about code in plain words, often without knowing which file or ter
 about. Answer from the code, show where the answer came from, and show how you found it, so
 each answer also teaches them one way to navigate a codebase.
 
-This skill writes no files and keeps no state. Each question is answered on its own.
+This skill writes nothing into the repo and keeps no state. Each question is answered on its own.
 
 ## Before answering
 
@@ -48,9 +48,9 @@ memory.
 
 Before the first lookup in a session, load the `LSP` tool with ToolSearch and make one
 call, such as go-to-definition on the entry point you found. Don't skip this because Bash
-is already loaded: without it, every lookup runs through text search alone. When the call
-says no server handles the language, open the first answer with one line, then don't
-repeat it: "No language server for <language>, so I read dependency code from the
+is already loaded: without it, every lookup runs through text search alone. When
+ToolSearch finds no `LSP` tool, or the call says no server handles the language, open the
+first answer with one line, then don't repeat it: "No language server for <language>, so I read dependency code from the
 installed packages, and calls through interfaces can be missed. To install one:
 https://github.com/atharh/grokking#recommended-tools."
 
@@ -68,7 +68,8 @@ them the answer is a map of the code, not an explanation of it.
    widen into the surrounding system.
 3. **A view**, only when walkthrough.md says it earns its place: one view from the shared
    [views.md](../../shared/views.md), with `path:line` on each node.
-4. **How I found it**, one line naming the search, in a form the user could repeat: "I
+4. **How I found it**, a last line with no label, naming the search in a form the user
+   could repeat: "I
    searched for the route `/messages`, opened its controller, then followed
    `broadcast_create`." Name the tool when it matters: the language server's
    go-to-definition or find-references, `rg`, `git log -S`.
@@ -87,7 +88,7 @@ decides it.
 
 ## Where to start
 
-When the user doesn't know where to start, give a map in one reply, without writing files:
+When the user doesn't know where to start, give a map in one reply, without writing into the repo:
 
 - what the program does for its user, in one sentence
 - the command that runs it or its tests

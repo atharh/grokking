@@ -4,8 +4,8 @@ Both skills walk code as steps from trigger to result: `explain` in one answer, 
 step per reply. Lay out every step the same way, so the user always knows where to look.
 
 Give a step only to code that decides something. A line that only connects two steps, such
-as a route, an include, or a config entry, goes in the next step's title or the previous
-step's handoff: "The login form posts to `SessionsController#create` (`config/routes.rb:6`)."
+as a route, an include, or a config entry, goes in the previous step's handoff or the next
+step's why: "The login form posts to `SessionsController#create` (`config/routes.rb:6`)."
 
 ## A step
 
@@ -57,6 +57,6 @@ Handoff: `authenticated_as` sets `Current.user` and writes the token into a sign
 - A list of the ways into a behavior names every caller of the function they share, found
   with both the language server's find-references and text search, and says how many there
   are.
-- A view from [views.md](views.md) earns its place only when it shows what the steps don't:
-  branches, several processes, or the order of many files. Don't add one that repeats the
-  steps.
+- In `explain`, a view from [views.md](views.md) earns its place only when it shows what the
+  steps don't: branches, several processes, or the order of many files. Don't add one that
+  repeats the steps. `learn` always opens a lesson with one, as its Picture step says.
