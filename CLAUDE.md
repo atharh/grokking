@@ -15,3 +15,17 @@ users see in `/plugin`, so an unchanged version makes an update look like nothin
 
 Semver: patch for wording and fixes, minor for new skills or new behaviour, major for a
 change that breaks an existing `TOUR.md`.
+
+## Backlog
+
+This repo's settings for the shared `backlog` skill. Where this section and the skill
+disagree, this section wins.
+
+- **Files.** `BACKLOG.md`, `LEDGER.md` and `DECISIONS.md`, all at the root. GitHub issues
+  are not used as a queue.
+- **Grouping.** By blocker: a decision, a test run in another repo, another item.
+- **Line cap.** None.
+- **Landed format.** The default one-line entry, with the plugin `version` it shipped in
+  when the change bumped it.
+- **Verification.** `claude plugin validate .` passes, and for a skill change, one run of
+  the changed skill on a real repo, named in the entry.
